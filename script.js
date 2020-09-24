@@ -4,7 +4,7 @@ const createRowNumbers = () => {
     for (let i = 0; i < rows; i++) {
         let number = document.createElement("li");
         number.id = 'number';
-        document.getElementById("list").appendChild(number);
+        document.getElementById("row-numbers").appendChild(number);
     }
 }
 
