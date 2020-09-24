@@ -1,38 +1,44 @@
-const academicWork = [new Date(2019, 9, 3), new Date(2020, 11, 4)];
-const jetshop = [new Date(2020, 0, 7), "present"];
-var cursor = true;
-var speed = 500;
+const createRowNumbers = () => {
+    let rows = 22;
 
-
-function CreateRowNumbers()
-{
-    let rows = 18;
-    for(let i = 0; i < rows; i++) {
+    for (let i = 0; i < rows; i++) {
         let number = document.createElement("li");
         number.id = 'number';
         document.getElementById("list").appendChild(number);
     }
-};
+}
 
-function GetWorkDates(dates) {
-    if (dates[1] === "present")
-    {
+const getWorkDates = (dates) => {
+    if (dates[1] === "present") {
         return dates[0].toDateString() + " - " + dates[1];
     }
+    
     return dates[0].toDateString() + " - " + dates[1].toDateString();
-};
+}
 
-setInterval(() => {
-    if (cursor) {
-        document.getElementById('cursor').style.opacity = 0;
-        cursor = false;
-    } else {
-        document.getElementById('cursor').style.opacity = 1;
-        cursor = true;
-    }
-}, speed);
+const makeBlinkingCursor = () => {
+    let cursor = true;
+    let cursorElement = document.getElementById('cursor');
 
-CreateRowNumbers();
+    setInterval(() => {
+        if (cursor) {
+            cursorElement.style.opacity = 0;
+            cursor = false;
+        } else {
+            cursorElement.style.opacity = 1;
+            cursor = true;
+        }
+    }, 500);
+}
 
-document.getElementById("workDatesAcademicWork").innerHTML = GetWorkDates(academicWork);
-document.getElementById("workDatesJetshop").innerHTML = GetWorkDates(jetshop);
+const handleWorkPeriods = () => {
+    let academicWork = [new Date(2019, 9, 3), new Date(2020, 11, 4)];
+    let jetshop = [new Date(2020, 0, 7), "present"];
+
+    document.getElementById("workDatesAcademicWork").innerText = getWorkDates(academicWork);
+    document.getElementById("workDatesJetshop").innerText = getWorkDates(jetshop);  
+}
+
+createRowNumbers();
+makeBlinkingCursor();
+handleWorkPeriods();
