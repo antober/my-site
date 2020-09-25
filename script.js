@@ -2,21 +2,14 @@ const createRowNumbers = () => {
     let rows = 22;
 
     for (let i = 0; i < rows; i++) {
-        let number = document.createElement("li");
+        let number = document.createElement('li');
+
         number.id = 'number';
-        document.getElementById("row-numbers").appendChild(number);
+        document.getElementById('row-numbers').appendChild(number);
     }
 }
 
-const getWorkDates = (dates) => {
-    if (dates[1] === "present") {
-        return dates[0].toDateString() + " - " + dates[1];
-    }
-    
-    return dates[0].toDateString() + " - " + dates[1].toDateString();
-}
-
-const makeBlinkingCursor = () => {
+const blinkingCursor = () => {
     let cursor = true;
     let cursorElement = document.getElementById('cursor');
 
@@ -31,14 +24,22 @@ const makeBlinkingCursor = () => {
     }, 500);
 }
 
-const handleWorkPeriods = () => {
-    let academicWork = [new Date(2019, 9, 3), new Date(2020, 11, 4)];
-    let jetshop = [new Date(2020, 0, 7), "present"];
-
-    document.getElementById("workDatesAcademicWork").innerText = getWorkDates(academicWork);
-    document.getElementById("workDatesJetshop").innerText = getWorkDates(jetshop);  
+const getWorkDates = (timeSpan) => {
+    if (timeSpan.endDate === 'present') {
+        return `${timeSpan.startDate.toDateString()} - ${timeSpan.endDate}`;
+    }
+    
+    return `${timeSpan.startDate.toDateString()} - ${timeSpan.endDate.toDateString()}`;
 }
 
+const getWorkPeriods = () => {
+    let academicWork = { startDate: new Date(2019, 9, 3), endDate: new Date(2020, 11, 4) };
+    let jetshop = { startDate: new Date(2020, 0, 7), endDate: 'present' };
+
+    document.getElementById('workDatesAcademicWork').innerText = getWorkDates(academicWork);
+    document.getElementById('workDatesJetshop').innerText = getWorkDates(jetshop);  
+}
+
+blinkingCursor();
 createRowNumbers();
-makeBlinkingCursor();
-handleWorkPeriods();
+getWorkPeriods();
