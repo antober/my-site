@@ -1,5 +1,5 @@
 const createRowNumbers = () => {
-    let rows = 22;
+    let rows = 91;
 
     for (let i = 0; i < rows; i++) {
         let number = document.createElement('li');
@@ -28,7 +28,7 @@ const getWorkDates = (timeSpan) => {
     if (timeSpan.endDate === 'present') {
         return `${timeSpan.startDate.toDateString()} - ${timeSpan.endDate}`;
     }
-    
+
     return `${timeSpan.startDate.toDateString()} - ${timeSpan.endDate.toDateString()}`;
 }
 
@@ -37,7 +37,7 @@ const getWorkPeriods = () => {
     let jetshop = { startDate: new Date(2020, 0, 7), endDate: 'present' };
 
     document.getElementById('workDatesAcademicWork').innerText = getWorkDates(academicWork);
-    document.getElementById('workDatesJetshop').innerText = getWorkDates(jetshop);  
+    document.getElementById('workDatesJetshop').innerText = getWorkDates(jetshop);
 }
 
 blinkingCursor();
