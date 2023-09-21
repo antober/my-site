@@ -34,10 +34,12 @@ const getWorkDates = (timeSpan) => {
 
 const getWorkPeriods = () => {
     let academicWork = { startDate: new Date(2019, 9, 3), endDate: new Date(2020, 11, 4) };
-    let jetshop = { startDate: new Date(2020, 0, 7), endDate: 'present' };
+    let jetshop = { startDate: new Date(2020, 0, 7), endDate: new Date(2023, 0, 7) };
+    let vitecAppva = { startDate: new Date(2020, 0, 9), endDate: 'present' };
 
     document.getElementById('workDatesAcademicWork').innerText = getWorkDates(academicWork);
     document.getElementById('workDatesJetshop').innerText = getWorkDates(jetshop);
+    document.getElementById('workDatesVitecAppva').innerText = getWorkDates(vitecAppva);
 }
 
 blinkingCursor();
